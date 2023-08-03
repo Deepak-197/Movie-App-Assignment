@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Playlist App</title>
+  <style>
+    /* Add your custom CSS styles here */
+  </style>
+</head>
+<body>
+  <h1>Movie Playlist App</h1>
+  <div>
+    <label for="searchTerm">Search movies:</label>
+    <input type="text" id="searchTerm" placeholder="Enter movie title">
+    <button onclick="searchMovies()">Search</button>
+  </div>
+  <div id="searchResults">
+    <!-- Movie search results will be displayed here -->
+  </div>
+  <div>
+    <input type="text" id="playlistName" placeholder="Playlist name">
+    <label>
+      <input type="checkbox" id="isPublic">
+      Public
+    </label>
+    <button onclick="createPlaylist()">Create Playlist</button>
+  </div>
+  <ul id="playlists">
+    <!-- Playlists will be displayed here -->
+  </ul>
+  <div id="playlistMovies">
+    <!-- Movies in the selected playlist will be displayed here -->
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

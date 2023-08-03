@@ -57,6 +57,35 @@ app.get('/api/playlists', (req, res) => {
   });
 });
 
+
+// API endpoint to remove a movie from the selected playlist
+app.put('/api/playlists/:id/removeMovie', (req, res) => {
+  const playlistId = req.params.id;
+  const movieId = req.body.movieId;
+
+  Playlist.findById(playlistId, (err, playlist) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error fetching playlist');
+    } else {
+      const index = playlist.movies.indexOf(movieId);
+      if (index !== -1) {
+        playlist.movies.splice(index, 1);
+        playlist.save((err) => {
+          if (err) {
+            console.error(err);
+            res.status(500).send('Error saving playlist');
+          } else {
+            res.json(playlist);
+          }
+        });
+      } else {
+        res.status(404).send('Movie not found in the playlist');
+      }
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
